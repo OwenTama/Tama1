@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeatZone | Albums</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0d0d0d;
+            color: #ffffff;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #1a1a2e;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #e94560;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        nav ul li a:hover {
+            color: #e94560;
+        }
+
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            padding: 60px 20px 30px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+        }
+
+        .page-header h1 {
+            font-size: 46px;
+            color: #e94560;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            font-size: 18px;
+            color: #cccccc;
+        }
+
+        /* Section Title */
+        .section-title {
+            text-align: center;
+            font-size: 28px;
+            color: #e94560;
+            margin: 40px 0 20px;
+        }
+
+        /* Albums Grid */
+        .albums-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            padding: 20px 40px;
+        }
+
+        /* Album Card */
+        .album-card {
+            background-color: #1a1a2e;
+            border-radius: 15px;
+            width: 260px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .album-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(233, 69, 96, 0.3);
+        }
+
+        /* Album Cover */
+        .album-cover {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+        }
+
+        .album-card .album-info {
+            padding: 15px 20px 20px;
+        }
+
+        .album-card h3 {
+            font-size: 18px;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+
+        .album-card .artist-name {
+            font-size: 14px;
+            color: #e94560;
+            margin-bottom: 8px;
+        }
+
+        .album-card .album-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #aaaaaa;
+            margin-bottom: 10px;
+        }
+
+        /* Star Rating */
+        .stars {
+            color: #f5c518;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .album-card p {
+            font-size: 13px;
+            color: #aaaaaa;
+            line-height: 1.6;
+        }
+
+        /* Track List */
+        .track-list {
+            margin-top: 10px;
+            border-top: 1px solid #0f3460;
+            padding-top: 10px;
+        }
+
+        .track-list p {
+            font-size: 12px;
+            color: #888888;
+            margin-bottom: 3px;
+        }
+
+        .track-list p span {
+            color: #e94560;
+            font-weight: bold;
+        }
+
+        /* Chart Table */
+        .chart-section {
+            padding: 20px 40px 60px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #1a1a2e;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        table th {
+            background-color: #e94560;
+            color: white;
+            padding: 14px 20px;
+            text-align: left;
+            font-size: 15px;
+        }
+
+        table td {
+            padding: 12px 20px;
+            border-bottom: 1px solid #0f3460;
+            font-size: 14px;
+            color: #cccccc;
+        }
+
+        table tr:hover {
+            background-color: #16213e;
+        }
+
+        table td:first-child {
+            color: #e94560;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: #1a1a2e;
+            color: #aaaaaa;
+        }
+
+        footer span {
+            color: #e94560;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">🎵 BeatZone</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="artists.html">Artists</a></li>
+            <li><a href="albums.html">Albums</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="genres.html">Genres</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>💿 Albums</h1>
+        <p>Reviews and rankings of the best albums across all genres</p>
+    </div>
+
+    <!-- Featured Albums -->
+    <h2 class="section-title">🔥 Featured Albums</h2>
+    <div class="albums-grid">
+
+        <div class="album-card">
+            <div class="album-cover" style="background: linear-gradient(135deg, #1db954, #0d0d0d);">🎵</div>
+            <div class="album-info">
+                <h3>GNX</h3>
+                <p class="artist-name">Kendrick Lamar</p>
+                <div class="album-meta">
+                    <span>📅 2024</span>
+                    <span>🎸 Hip Hop</span>
+                    <span>⏱ 12 Tracks</span>
+                </div>
+                <div class="stars">★★★★★</div>
+                <p>A masterful return from Kendrick, blending West Coast sounds with razor sharp lyricism.</p>
+                <div class="track-list">
+                    <p><span>1.</span> wacced out murals</p>
+                    <p><span>2.</span> squabble up</p>
+                    <p><span>3.</span> luther</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="album-card">
+            <div class="album-cover" style="background: linear-gradient(135deg, #f5a623, #0d0d0d);">🌍</div>
+            <div class="album-info">
+                <h3>I Told Them</h3>
+                <p class="artist-name">Burna Boy</p>
+                <div class="album-meta">
+                    <span>📅 2023</span>
+                    <span>🎸 Afrobeats</span>
+                    <span>⏱ 13 Tracks</span>
+                </div>
+                <div class="stars">★★★★★</div>
+                <p>Burna Boy continues to dominate globally with this bold and genre-defying project.</p>
+                <div class="track-list">
+                    <p><span>1.</span> Sittin on Top of the World</p>
+                    <p><span>2.</span> Tested</p>
+                    <p><span>3.</span> Alone</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="album-card">
+            <div class="album-cover" style="background: linear-gradient(135deg, #9b59b6, #0d0d0d);">🌟</div>
+            <div class="album-info">
+                <h3>The Tortured Poets</h3>
+                <p class="artist-name">Taylor Swift</p>
+                <div class="album-meta">
+                    <span>📅 2024</span>
+                    <span>🎸 Pop</span>
+                    <span>⏱ 31 Tracks</span>
+                </div>
+                <div class="stars">★★★★☆</div>
+                <p>Taylor pours her heart out in this deeply personal and poetic double album.</p>
+                <div class="track-list">
+                    <p><span>1.</span> Fortnight</p>
+                    <p><span>2.</span> The Tortured Poets Department</p>
+                    <p><span>3.</span> So Long London</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="album-card">
+            <div class="album-cover" style="background: linear-gradient(135deg, #e94560, #0d0d0d);">🎹</div>
+            <div class="album-info">
+                <h3>Hurry Up Tomorrow</h3>
+                <p class="artist-name">The Weeknd</p>
+                <div class="album-meta">
+                    <span>📅 2025</span>
+                    <span>🎸 R&B</span>
+                    <span>⏱ 22 Tracks</span>
+                </div>
+                <div class="stars">★★★★★</div>
+                <p>The Weeknd's final chapter — a cinematic and emotional farewell to his alter ego.</p>
+                <div class="track-list">
+                    <p><span>1.</span> São Paulo</p>
+                    <p><span>2.</span> Cry For Me</p>
+                    <p><span>3.</span> Reflections Laughing</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- BeatZone Top 5 Chart Table -->
+    <h2 class="section-title">📊 BeatZone Top 5 Chart</h2>
+    <div class="chart-section">
+        <table>
+            <tr>
+                <th>#</th>
+                <th>Album</th>
+                <th>Artist</th>
+                <th>Genre</th>
+                <th>Year</th>
+                <th>Rating</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>GNX</td>
+                <td>Kendrick Lamar</td>
+                <td>Hip Hop</td>
+                <td>2024</td>
+                <td>⭐⭐⭐⭐⭐</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Hurry Up Tomorrow</td>
+                <td>The Weeknd</td>
+                <td>R&B</td>
+                <td>2025</td>
+                <td>⭐⭐⭐⭐⭐</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>I Told Them</td>
+                <td>Burna Boy</td>
+                <td>Afrobeats</td>
+                <td>2023</td>
+                <td>⭐⭐⭐⭐⭐</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>The Tortured Poets</td>
+                <td>Taylor Swift</td>
+                <td>Pop</td>
+                <td>2024</td>
+                <td>⭐⭐⭐⭐☆</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Eternal Sunshine</td>
+                <td>Ariana Grande</td>
+                <td>Pop</td>
+                <td>2024</td>
+                <td>⭐⭐⭐⭐☆</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 <span>BeatZone</span>. Made with ❤️ for music lovers.</p>
+    </footer>
+
+</body>
+</html>
