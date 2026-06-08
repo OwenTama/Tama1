@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeatZone | Artists</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0d0d0d;
+            color: #ffffff;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #1a1a2e;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #e94560;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        nav ul li a:hover {
+            color: #e94560;
+        }
+
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            padding: 60px 20px 30px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+        }
+
+        .page-header h1 {
+            font-size: 46px;
+            color: #e94560;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            font-size: 18px;
+            color: #cccccc;
+        }
+
+        /* Search Bar */
+        .search-bar {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .search-bar input {
+            padding: 12px 20px;
+            width: 350px;
+            border-radius: 25px;
+            border: 2px solid #e94560;
+            background-color: #1a1a2e;
+            color: #ffffff;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .search-bar input::placeholder {
+            color: #aaaaaa;
+        }
+
+        /* Genre Filter Buttons */
+        .filters {
+            text-align: center;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .filters button {
+            padding: 8px 20px;
+            border-radius: 20px;
+            border: 2px solid #e94560;
+            background-color: transparent;
+            color: #e94560;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filters button:hover {
+            background-color: #e94560;
+            color: #ffffff;
+        }
+
+        /* Artists Grid */
+        .artists-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            padding: 20px 40px 60px;
+        }
+
+        /* Artist Card */
+        .artist-card {
+            background-color: #1a1a2e;
+            border-radius: 15px;
+            width: 250px;
+            text-align: center;
+            padding: 25px 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .artist-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(233, 69, 96, 0.3);
+        }
+
+        .artist-card .avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background-color: #0f3460;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            border: 3px solid #e94560;
+        }
+
+        .artist-card h3 {
+            font-size: 20px;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+
+        .artist-card .genre-tag {
+            display: inline-block;
+            background-color: #e94560;
+            color: white;
+            font-size: 12px;
+            padding: 3px 12px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+        }
+
+        .artist-card p {
+            font-size: 13px;
+            color: #aaaaaa;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .artist-card .stats {
+            display: flex;
+            justify-content: space-around;
+            border-top: 1px solid #0f3460;
+            padding-top: 12px;
+            margin-top: 5px;
+        }
+
+        .artist-card .stats div {
+            text-align: center;
+        }
+
+        .artist-card .stats div span {
+            display: block;
+            font-size: 16px;
+            font-weight: bold;
+            color: #e94560;
+        }
+
+        .artist-card .stats div small {
+            font-size: 11px;
+            color: #aaaaaa;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: #1a1a2e;
+            color: #aaaaaa;
+        }
+
+        footer span {
+            color: #e94560;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">🎵 BeatZone</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="artists.html">Artists</a></li>
+            <li><a href="albums.html">Albums</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="genres.html">Genres</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>🎤 Artists</h1>
+        <p>Discover the voices shaping the sound of today and tomorrow</p>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <input type="text" placeholder="🔍 Search for an artist...">
+    </div>
+
+    <!-- Genre Filter Buttons -->
+    <div class="filters">
+        <button>All</button>
+        <button>Hip Hop</button>
+        <button>Afrobeats</button>
+        <button>Pop</button>
+        <button>R&B</button>
+        <button>Gospel</button>
+        <button>Electronic</button>
+    </div>
+
+    <!-- Artists Grid -->
+    <div class="artists-grid">
+
+        <div class="artist-card">
+            <div class="avatar">🎤</div>
+            <h3>Kendrick Lamar</h3>
+            <span class="genre-tag">Hip Hop</span>
+            <p>Pulitzer Prize winning rapper known for storytelling and bold social commentary.</p>
+            <div class="stats">
+                <div><span>47M</span><small>Fans</small></div>
+                <div><span>12</span><small>Albums</small></div>
+                <div><span>5⭐</span><small>Rating</small></div>
+            </div>
+        </div>
+
+        <div class="artist-card">
+            <div class="avatar">🎶</div>
+            <h3>Burna Boy</h3>
+            <span class="genre-tag">Afrobeats</span>
+            <p>Grammy-winning African Giant bringing Afrobeats to every corner of the world.</p>
+            <div class="stats">
+                <div><span>32M</span><small>Fans</small></div>
+                <div><span>8</span><small>Albums</small></div>
+                <div><span>5⭐</span><small>Rating</small></div>
+            </div>
+        </div>
+
+        <div class="artist-card">
+            <div class="avatar">🎵</div>
+            <h3>Taylor Swift</h3>
+            <span class="genre-tag">Pop</span>
+            <p>Record-breaking pop icon whose music spans genres and generations worldwide.</p>
+            <div class="stats">
+                <div><span>92M</span><small>Fans</small></div>
+                <div><span>11</span><small>Albums</small></div>
+                <div><span>5⭐</span><small>Rating</small></div>
+            </div>
+        </div>
+
+        <div class="artist-card">
+            <div class="avatar">🎸</div>
+            <h3>Sauti Sol</h3>
+            <span class="genre-tag">Afrobeats</span>
+            <p>Kenya's finest band blending Afropop, R&B and traditional sounds beautifully.</p>
+            <div class="stats">
+                <div><span>8M</span><small>Fans</small></div>
+                <div><span>6</span><small>Albums</small></div>
+                <div><span>5⭐</span><small>Rating</small></div>
+            </div>
+        </div>
+
+        <div class="artist-card">
+            <div class="avatar">🎹</div>
+            <h3>The Weeknd</h3>
+            <span class="genre-tag">R&B</span>
+            <p>Dark R&B visionary with atmospheric production and unforgettable vocal range.</p>
+            <div class="stats">
+                <div><span>78M</span><small>Fans</small></div>
+                <div><span>9</span><small>Albums</small></div>
+                <div><span>5⭐</span><small>Rating</small></div>
+            </div>
+        </div>
+
+        <div class="artist-card">
+            <div class="avatar">🙏</div>
+            <h3>Mercy Masika</h3>
+            <span class="genre-tag">Gospel</span>
+            <p>Kenya's beloved gospel minister with soul-touching worship anthems and praise songs.</p>
+            <div class="stats">
+                <div><span>3M</span><small>Fans</small></div>
+                <div><span>5</span><small>Albums</small></div>
+                <div><span>5⭐</span><small>Rating</small></div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 <span>BeatZone</span>. Made with ❤️ for music lovers.</p>
+    </footer>
+
+</body>
+</html>
