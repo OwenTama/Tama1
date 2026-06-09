@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeatZone | Blog</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0d0d0d;
+            color: #ffffff;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #1a1a2e;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #e94560;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        nav ul li a:hover {
+            color: #e94560;
+        }
+
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            padding: 60px 20px 30px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+        }
+
+        .page-header h1 {
+            font-size: 46px;
+            color: #e94560;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            font-size: 18px;
+            color: #cccccc;
+        }
+
+        /* Blog Layout */
+        .blog-layout {
+            display: flex;
+            gap: 30px;
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Main Blog Posts */
+        .blog-main {
+            flex: 2;
+        }
+
+        /* Sidebar */
+        .blog-sidebar {
+            flex: 1;
+        }
+
+        /* Blog Card */
+        .blog-card {
+            background-color: #1a1a2e;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(233, 69, 96, 0.3);
+        }
+
+        /* Featured Post - Big */
+        .blog-card.featured {
+            display: flex;
+            gap: 0;
+        }
+
+        .blog-card.featured .blog-cover {
+            width: 220px;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 70px;
+            flex-shrink: 0;
+        }
+
+        .blog-card .blog-cover {
+            width: 100%;
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+        }
+
+        .blog-card .blog-content {
+            padding: 20px 25px;
+        }
+
+        .blog-card .category-tag {
+            display: inline-block;
+            background-color: #e94560;
+            color: white;
+            font-size: 11px;
+            padding: 3px 12px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .blog-card h2 {
+            font-size: 20px;
+            color: #ffffff;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .blog-card p {
+            font-size: 14px;
+            color: #aaaaaa;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .blog-meta {
+            display: flex;
+            gap: 15px;
+            font-size: 12px;
+            color: #666666;
+            margin-bottom: 15px;
+        }
+
+        .blog-meta span {
+            color: #e94560;
+        }
+
+        .read-more {
+            display: inline-block;
+            color: #e94560;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+            border: 1px solid #e94560;
+            padding: 6px 16px;
+            border-radius: 15px;
+            transition: all 0.3s;
+        }
+
+        .read-more:hover {
+            background-color: #e94560;
+            color: white;
+        }
+
+        /* Sidebar Widgets */
+        .sidebar-widget {
+            background-color: #1a1a2e;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .sidebar-widget h3 {
+            color: #e94560;
+            font-size: 18px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #0f3460;
+        }
+
+        /* Trending List */
+        .trending-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #0f3460;
+        }
+
+        .trending-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .trending-num {
+            font-size: 24px;
+            font-weight: bold;
+            color: #e94560;
+            width: 30px;
+        }
+
+        .trending-item p {
+            font-size: 13px;
+            color: #cccccc;
+            line-height: 1.4;
+        }
+
+        .trending-item small {
+            font-size: 11px;
+            color: #666666;
+        }
+
+        /* Categories List */
+        .category-list {
+            list-style: none;
+        }
+
+        .category-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #0f3460;
+            font-size: 14px;
+            color: #cccccc;
+        }
+
+        .category-list li:last-child {
+            border-bottom: none;
+        }
+
+        .category-list li span {
+            background-color: #e94560;
+            color: white;
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+
+        /* Newsletter Box */
+        .newsletter input {
+            width: 100%;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 2px solid #0f3460;
+            background-color: #0d0d0d;
+            color: #ffffff;
+            font-size: 14px;
+            margin-bottom: 10px;
+            outline: none;
+        }
+
+        .newsletter input:focus {
+            border-color: #e94560;
+        }
+
+        .newsletter button {
+            width: 100%;
+            padding: 10px;
+            background-color: #e94560;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .newsletter button:hover {
+            background-color: #c73652;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: #1a1a2e;
+            color: #aaaaaa;
+            margin-top: 20px;
+        }
+
+        footer span {
+            color: #e94560;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">🎵 BeatZone</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="artists.html">Artists</a></li>
+            <li><a href="albums.html">Albums</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="genres.html">Genres</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>📝 Music Blog</h1>
+        <p>Fresh stories, hot takes and deep dives from the world of music</p>
+    </div>
+
+    <!-- Blog Layout -->
+    <div class="blog-layout">
+
+        <!-- Main Posts -->
+        <div class="blog-main">
+
+            <!-- Featured Post -->
+            <div class="blog-card featured">
+                <div class="blog-cover" style="background: linear-gradient(135deg, #e94560, #0f3460);">🎤</div>
+                <div class="blog-content">
+                    <span class="category-tag">⭐ Featured</span>
+                    <h2>Kendrick Lamar's Super Bowl Performance: A Historic Moment for Hip Hop</h2>
+                    <div class="blog-meta">
+                        <span>📅 June 2026</span> &bull;
+                        <span>✍️ BeatZone Editorial</span> &bull;
+                        <span>⏱ 5 min read</span>
+                    </div>
+                    <p>Kendrick Lamar's performance at the Super Bowl LIX halftime show was nothing short of legendary. From the opening bars to the final bow, it was a masterclass in artistry, storytelling and showmanship that will be talked about for decades.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </div>
+
+            <!-- Post 2 -->
+            <div class="blog-card">
+                <div class="blog-cover" style="background: linear-gradient(135deg, #f5a623, #0d0d0d);">🌍</div>
+                <div class="blog-content">
+                    <span class="category-tag">Afrobeats</span>
+                    <h2>How Afrobeats Took Over the World in 2025</h2>
+                    <div class="blog-meta">
+                        <span>📅 May 2026</span> &bull;
+                        <span>✍️ Owen Tama</span> &bull;
+                        <span>⏱ 4 min read</span>
+                    </div>
+                    <p>From Lagos to London, Nairobi to New York — Afrobeats is no longer just a genre, it is a global movement. We trace the journey of how African music conquered the world stage and what comes next.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </div>
+
+            <!-- Post 3 -->
+            <div class="blog-card">
+                <div class="blog-cover" style="background: linear-gradient(135deg, #1db954, #0d0d0d);">🎸</div>
+                <div class="blog-content">
+                    <span class="category-tag">Kenya</span>
+                    <h2>Sauti Sol: The Band That Kept Kenyan Music on the World Map</h2>
+                    <div class="blog-meta">
+                        <span>📅 April 2026</span> &bull;
+                        <span>✍️ Owen Tama</span> &bull;
+                        <span>⏱ 3 min read</span>
+                    </div>
+                    <p>For over a decade, Sauti Sol has been the flag bearers of Kenyan music internationally. We look back at their journey, their impact and what their legacy means for the next generation of Kenyan artists.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </div>
+
+            <!-- Post 4 -->
+            <div class="blog-card">
+                <div class="blog-cover" style="background: linear-gradient(135deg, #9b59b6, #0d0d0d);">🎹</div>
+                <div class="blog-content">
+                    <span class="category-tag">R&B</span>
+                    <h2>The Weeknd Retires His Alter Ego: What It Means for R&B</h2>
+                    <div class="blog-meta">
+                        <span>📅 March 2026</span> &bull;
+                        <span>✍️ BeatZone Editorial</span> &bull;
+                        <span>⏱ 4 min read</span>
+                    </div>
+                    <p>With the release of Hurry Up Tomorrow, The Weeknd closed the chapter on his iconic alter ego. We explore what this bold move means for his career and for the future of modern R&B music.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Sidebar -->
+        <div class="blog-sidebar">
+
+            <!-- Trending -->
+            <div class="sidebar-widget">
+                <h3>🔥 Trending Now</h3>
+                <div class="trending-item">
+                    <div class="trending-num">01</div>
+                    <div>
+                        <p>Burna Boy announces world tour 2026</p>
+                        <small>2.3k reads</small>
+                    </div>
+                </div>
+                <div class="trending-item">
+                    <div class="trending-num">02</div>
+                    <div>
+                        <p>Best Kenyan albums of the decade</p>
+                        <small>1.8k reads</small>
+                    </div>
+                </div>
+                <div class="trending-item">
+                    <div class="trending-num">03</div>
+                    <div>
+                        <p>Taylor Swift breaks streaming records again</p>
+                        <small>1.5k reads</small>
+                    </div>
+                </div>
+                <div class="trending-item">
+                    <div class="trending-num">04</div>
+                    <div>
+                        <p>Top 10 Gospel artists in Africa 2026</p>
+                        <small>1.1k reads</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categories -->
+            <div class="sidebar-widget">
+                <h3>🎸 Categories</h3>
+                <ul class="category-list">
+                    <li>Hip Hop <span>12</span></li>
+                    <li>Afrobeats <span>9</span></li>
+                    <li>R&B <span>8</span></li>
+                    <li>Pop <span>11</span></li>
+                    <li>Gospel <span>6</span></li>
+                    <li>Electronic <span>4</span></li>
+                </ul>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="sidebar-widget">
+                <h3>📬 Newsletter</h3>
+                <p style="font-size:13px; color:#aaaaaa; margin-bottom:15px;">
+                    Get the latest music news delivered to your inbox every week.
+                </p>
+                <div class="newsletter">
+                    <input type="text" placeholder="Your Name">
+                    <input type="email" placeholder="Your Email">
+                    <button>Subscribe 🎵</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 <span>BeatZone</span>. Made with ❤️ for music lovers.</p>
+    </footer>
+
+</body>
+</html>
