@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeatZone | Genres</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0d0d0d;
+            color: #ffffff;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #1a1a2e;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #e94560;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        nav ul li a:hover {
+            color: #e94560;
+        }
+
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            padding: 60px 20px 30px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+        }
+
+        .page-header h1 {
+            font-size: 46px;
+            color: #e94560;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            font-size: 18px;
+            color: #cccccc;
+        }
+
+        /* Section Title */
+        .section-title {
+            text-align: center;
+            font-size: 30px;
+            color: #e94560;
+            margin: 50px 0 25px;
+        }
+
+        /* Genres Hero Grid */
+        .genres-hero {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px 40px;
+        }
+
+        .genre-card {
+            width: 300px;
+            border-radius: 15px;
+            padding: 35px 25px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .genre-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+        }
+
+        .genre-card .genre-icon {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        .genre-card h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .genre-card p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .genre-card .genre-artists {
+            font-size: 12px;
+            color: rgba(255,255,255,0.6);
+            font-style: italic;
+        }
+
+        .genre-card .song-count {
+            display: inline-block;
+            background-color: rgba(255,255,255,0.2);
+            padding: 4px 14px;
+            border-radius: 12px;
+            font-size: 12px;
+            color: #ffffff;
+            margin-top: 10px;
+        }
+
+        /* Genre Colors */
+        .hiphop { background: linear-gradient(135deg, #1a1a2e, #e94560); }
+        .afrobeats { background: linear-gradient(135deg, #1a1a2e, #f5a623); }
+        .rnb { background: linear-gradient(135deg, #1a1a2e, #9b59b6); }
+        .pop { background: linear-gradient(135deg, #1a1a2e, #e91e8c); }
+        .gospel { background: linear-gradient(135deg, #1a1a2e, #f1c40f); }
+        .electronic { background: linear-gradient(135deg, #1a1a2e, #00d2ff); }
+        .reggae { background: linear-gradient(135deg, #1a1a2e, #1db954); }
+
+        /* Timeline Section */
+        .timeline-section {
+            padding: 20px 40px 60px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            align-items: flex-start;
+        }
+
+        .timeline-dot {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #e94560;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+
+        .timeline-content {
+            background-color: #1a1a2e;
+            border-radius: 12px;
+            padding: 18px 22px;
+            flex: 1;
+        }
+
+        .timeline-content h3 {
+            color: #e94560;
+            margin-bottom: 5px;
+            font-size: 18px;
+        }
+
+        .timeline-content p {
+            font-size: 13px;
+            color: #aaaaaa;
+            line-height: 1.6;
+        }
+
+        .timeline-content .year {
+            font-size: 12px;
+            color: #666666;
+            margin-bottom: 6px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: #1a1a2e;
+            color: #aaaaaa;
+        }
+
+        footer span {
+            color: #e94560;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">🎵 BeatZone</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="artists.html">Artists</a></li>
+            <li><a href="albums.html">Albums</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="genres.html">Genres</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>🎸 Music Genres</h1>
+        <p>Explore the sounds, stories and cultures behind every genre</p>
+    </div>
+
+    <!-- Genres Grid -->
+    <h2 class="section-title">🌍 Explore by Genre</h2>
+    <div class="genres-hero">
+
+        <div class="genre-card hiphop">
+            <div class="genre-icon">🎤</div>
+            <h2>Hip Hop</h2>
+            <p>Born in the Bronx in the 1970s, Hip Hop is a culture of rhythm, rhyme, beats and bold storytelling that changed the world.</p>
+            <div class="genre-artists">Kendrick Lamar • Drake • J. Cole • Nas</div>
+            <div class="song-count">🎵 2,400+ Songs</div>
+        </div>
+
+        <div class="genre-card afrobeats">
+            <div class="genre-icon">🌍</div>
+            <h2>Afrobeats</h2>
+            <p>Rooted in West African rhythms, Afrobeats blends traditional percussion with modern pop to create an irresistible global sound.</p>
+            <div class="genre-artists">Burna Boy • Wizkid • Davido • Tems</div>
+            <div class="song-count">🎵 1,800+ Songs</div>
+        </div>
+
+        <div class="genre-card rnb">
+            <div class="genre-icon">🎹</div>
+            <h2>R&B</h2>
+            <p>Rhythm and Blues combines soulful vocals with smooth production to create music that speaks directly to the heart and emotions.</p>
+            <div class="genre-artists">The Weeknd • SZA • Beyoncé • Frank Ocean</div>
+            <div class="song-count">🎵 3,100+ Songs</div>
+        </div>
+
+        <div class="genre-card pop">
+            <div class="genre-icon">🌟</div>
+            <h2>Pop</h2>
+            <p>Pop music is the world's most listened to genre — catchy melodies, relatable lyrics and polished production make it universally loved.</p>
+            <div class="genre-artists">Taylor Swift • Ariana Grande • Ed Sheeran</div>
+            <div class="song-count">🎵 5,000+ Songs</div>
+        </div>
+
+        <div class="genre-card gospel">
+            <div class="genre-icon">🙏</div>
+            <h2>Gospel</h2>
+            <p>Gospel music is a powerful expression of faith, joy and worship. It has influenced nearly every other music genre in existence.</p>
+            <div class="genre-artists">Mercy Masika • Kirk Franklin • Sinach</div>
+            <div class="song-count">🎵 1,200+ Songs</div>
+        </div>
+
+        <div class="genre-card electronic">
+            <div class="genre-icon">🎧</div>
+            <h2>Electronic</h2>
+            <p>Electronic music uses synthesizers, drum machines and digital tools to create futuristic soundscapes that dominate clubs worldwide.</p>
+            <div class="genre-artists">Calvin Harris • Daft Punk • Disclosure</div>
+            <div class="song-count">🎵 2,700+ Songs</div>
+        </div>
+
+        <div class="genre-card reggae">
+            <div class="genre-icon">🏝️</div>
+            <h2>Reggae</h2>
+            <p>Born in Jamaica in the 1960s, Reggae carries messages of peace, love and resistance through its iconic offbeat rhythms and soulful basslines.</p>
+            <div class="genre-artists">Bob Marley • Chronixx • Protoje</div>
+            <div class="song-count">🎵 900+ Songs</div>
+        </div>
+
+    </div>
+
+    <!-- Genre History Timeline -->
+    <h2 class="section-title">📅 History of Music Genres</h2>
+    <div class="timeline-section">
+
+        <div class="timeline-item">
+            <div class="timeline-dot">🎷</div>
+            <div class="timeline-content">
+                <div class="year">1920s</div>
+                <h3>Jazz & Blues</h3>
+                <p>The foundation of modern music. Jazz and Blues emerged from African American communities in the Southern United States, laying the groundwork for nearly every genre that followed.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot">🎸</div>
+            <div class="timeline-content">
+                <div class="year">1950s</div>
+                <h3>Rock & Roll</h3>
+                <p>Rock and Roll exploded onto the scene with Chuck Berry and Elvis Presley, electrifying a generation and changing youth culture forever.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot">🏝️</div>
+            <div class="timeline-content">
+                <div class="year">1960s</div>
+                <h3>Reggae</h3>
+                <p>Bob Marley and the Wailers brought Reggae from Jamaica to the world, spreading messages of love, unity and resistance through unforgettable rhythms.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot">🎤</div>
+            <div class="timeline-content">
+                <div class="year">1970s</div>
+                <h3>Hip Hop</h3>
+                <p>DJ Kool Herc threw a party in the Bronx, New York in 1973 and accidentally started a revolution. Hip Hop was born — a culture of DJing, MCing, breakdancing and graffiti.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot">🌍</div>
+            <div class="timeline-content">
+                <div class="year">2000s - Present</div>
+                <h3>Afrobeats Goes Global</h3>
+                <p>Artists like Wizkid, Burna Boy and Davido carried Afrobeats from Lagos nightclubs to the Grammy stage, making it the fastest growing genre in the world today.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 <span>BeatZone</span>. Made with ❤️ for music lovers.</p>
+    </footer>
+
+</body>
+</html>
